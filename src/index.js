@@ -1,6 +1,6 @@
 
 import './css/styles.css';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './fetchCountries.js';
 import debounce from 'lodash.debounce';
 
@@ -40,7 +40,7 @@ const onInput = debounce((event) => {
   fetchCountries(searchTerm)
     .then((countries) => {
       if (countries.length > 10) {
-        Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.');
+        Notify.warning('Too many matches found. Please enter a more specific name.');
       } else if (countries.length > 1) {
         renderCountryList(countries);
         countryInfo.innerHTML = '';
@@ -50,8 +50,9 @@ const onInput = debounce((event) => {
       }
     })
     .catch((error) => {
-      Notiflix.Notify.failure('Oops, there is no country with that name');
+      Notify.failure('Oops, there is no country with that name');
     });
 }, DEBOUNCE_DELAY);
 
 searchBox.addEventListener('input', onInput);
+
