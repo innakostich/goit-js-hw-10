@@ -1,11 +1,10 @@
-// import './css/styles.css';
 
-// const DEBOUNCE_DELAY = 300;
 import './css/styles.css';
 import Notiflix from 'notiflix';
 import { fetchCountries } from './fetchCountries.js';
 import debounce from 'lodash.debounce';
 
+const DEBOUNCE_DELAY = 300;
 
 const searchBox = document.getElementById('search-box');
 const countryList = document.querySelector('.country-list');
@@ -53,6 +52,6 @@ const onInput = debounce((event) => {
     .catch((error) => {
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
-}, 300);
+}, DEBOUNCE_DELAY);
 
 searchBox.addEventListener('input', onInput);
