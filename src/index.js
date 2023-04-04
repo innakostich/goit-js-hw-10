@@ -1,4 +1,3 @@
-
 import './css/styles.css';
 import './css/new.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -52,8 +51,9 @@ const onInput = debounce((event) => {
     })
     .catch((error) => {
       Notify.failure('Oops, there is no country with that name');
+      countryList.innerHTML = '';
+      countryInfo.innerHTML = '';
     });
 }, DEBOUNCE_DELAY);
 
 searchBox.addEventListener('input', onInput);
-
